@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(progettopf VERSION 0.1.0)
+project(toroidal_boids VERSION 0.1.0)
 
 # abilita il supporto per i test, tra cui l'opzione BUILD_TESTING usata sotto
 include(CTest)
@@ -22,10 +22,10 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined -fno-o
 
 # richiedi il componente graphics della libreria SFML, versione 2.5
 #   le dipendenze vengono identificate automaticamente
-find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
+find_package(SFML 2.5 COMPONENTS system window graphics REQUIRED)
 
-add_executable(mandelbrot main_sfml.cpp image.cpp mandelbrot.cpp)
-target_link_libraries(mandelbrot PRIVATE sfml-graphics)
+add_executable(toroidal_boids src/main.cpp src/boid.cpp src/flock.cpp src/functions.cpp)
+target_link_libraries(toroidal_boids PRIVATE sfml-system sfml-window sfml-graphics)
 
 # se il testing e' abilitato...
 #   per disabilitare il testing, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
