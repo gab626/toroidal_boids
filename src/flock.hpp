@@ -13,14 +13,12 @@ namespace bd {
 
 struct Parameters
 {
-  float interactionDistance   = 100.f; // parametri temporaneamente fissati
-  float separationDistance    = 30.f;
-  float separationCoefficient = 3.f;
-  float alignmentCoefficient  = 0.05f;
-  float cohesionCoefficient   = 0.3f;
-  int numberBoids             = 200;
-  const float maxSpeed        = 3000.f;
-  const float deltaT          = .001f;
+  float interactionDistance     = 100.f; // parametri temporaneamente fissati
+  float separationDistance      = 30.f;
+  float separationCoefficient   = 3.f;
+  float alignmentCoefficient    = 0.05f;
+  float cohesionCoefficient     = 0.3f;
+  long unsigned int numberBoids = 20;
 };
 
 class Flock
@@ -32,15 +30,15 @@ class Flock
   //   std::vector<Cell> grid_;
   // void saveStatistics(float, float, float, float);
   // void printStatistics();
+  void updateFlock(boidVector&);
 
  public:
   //   Flock();
   Flock(sf::Color);
   //   ~Flock();
-  int getNumberBoids() const;
-  boidVector getFlock() const; // non mi piace
+  long unsigned int getNumberBoids() const;
+  boidVector getFlock(); // non mi piace
   void evolve();
-  void updateFlock(boidVector&);
 };
 
 } // namespace bd
